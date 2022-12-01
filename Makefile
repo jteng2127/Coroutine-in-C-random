@@ -8,6 +8,7 @@ SRC:=src/runqueue.c
 SRC+=src/sched.c
 SRC+=src/coroutine.c
 SRC+=src/rbtree.c
+SRC+=src/heap.c
 
 OBJ=$(SRC:.c=.o)
 
@@ -28,3 +29,6 @@ clean:
 
 indent:
 	clang-format -i src/*.[ch]
+
+test_random: all
+	gcc -o tests/test tests/test_random.c coroutine.a -g && ./tests/test 2> /dev/null
