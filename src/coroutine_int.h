@@ -3,6 +3,7 @@
 
 #include "rbtree.h"
 #include "context.h"
+#include "heap.h"
 
 typedef int (*job_t)(struct context *__context, void *args);
 
@@ -63,6 +64,7 @@ struct cr {
     /* scheduler - chose by the flags */
     struct rq rq; /* FIFO */
     struct rb_root root; /* Default */
+    struct Heap heap; /* Random */
 
     /* sched operations */
     int (*schedule)(struct cr *cr, job_t func, void *args);
